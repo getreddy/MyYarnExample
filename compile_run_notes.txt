@@ -1,4 +1,6 @@
 == Playing with YArn example.
+For practice, copied the files of distributed shell project to my own directory and started compiling individual files. 
+Using ubuntu 13 desktop version for below compilation. 
 
 Compiling :
 
