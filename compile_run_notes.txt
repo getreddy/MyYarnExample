@@ -15,6 +15,8 @@ jar -cvf /home/srini/workspace/MyYarn/bin/SriniYarnClasses.jar -C sriniYarnClass
 
 running jar:
 
+cd to /home/srini/workspace/MyYarn/bin folder and run below commands
+
 yarn com.srini.hadoopYarn.Client -jar SriniYarnClasses.jar -help
 
 yarn com.srini.hadoopYarn.Client -jar SriniYarnClasses.jar -shell_command ls
