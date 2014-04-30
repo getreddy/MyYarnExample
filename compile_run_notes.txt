@@ -1,0 +1,33 @@
+== Playing with YArn example.
+
+Compiling :
+
+cd to /home/srini/workspace/MyYarn/src
+com.srini.hadoopYarn
+javac -classpath /home/srini/hadoop-2.2.0/share/hadoop/common/hadoop-common-2.2.0.jar:/home/srini/hadoop-2.2.0/share/hadoop/common/lib/commons-cli-1.2.jar:/home/srini/hadoop-2.2.0/share/hadoop/common/lib/commons-logging-1.1.1.jar:/home/srini/hadoop-2.2.0/share/hadoop/common/lib/hadoop-annotations-2.2.0.jar:/home/srini/hadoop-2.2.0/share/hadoop/common/lib/guava-11.0.2.jar:/home/srini/hadoop-2.2.0/share/hadoop/yarn/hadoop-yarn-api-2.2.0.jar:/home/srini/hadoop-2.2.0/share/hadoop/yarn/hadoop-yarn-client-2.2.0.jar:/home/srini/hadoop-2.2.0/share/hadoop/yarn/hadoop-yarn-common-2.2.0.jar:  -d sriniYarnClasses com/srini/hadoopYarn/Client.java
+
+Above command needs to be run for Appmaster and DSConstants.java
+
+building jar:
+jar -cvf /home/srini/workspace/MyYarn/bin/SriniYarnClasses.jar -C sriniYarnClasses/ .
+
+running jar:
+
+yarn com.srini.hadoopYarn.Client -jar SriniYarnClasses.jar -help
+
+yarn com.srini.hadoopYarn.Client -jar SriniYarnClasses.jar -shell_command ls
+
+hadoop jar /usr/lib/hadoop-yarn/hadoop-yarn-applications-distributedshell.jar org.apache.hadoop.yarn.applications.distributedshell.Client --jar /usr/lib/hadoop-yarn/hadoop-yarn-applications-distributedshell.jar --shell_command date --num_containers 1
+
+running example:
+
+
+srini@ubuntu:~/hadoop-2.2.0/share/hadoop/yarn$ yarn org.apache.hadoop.yarn.applications.distributedshell.Client -jar hadoop-yarn-applications-distributedshell-2.2.0.jar -help
+
+srini@ubuntu:~/hadoop-2.2.0/share/hadoop/yarn$ yarn org.apache.hadoop.yarn.applications.distributedshell.Client -jar hadoop-yarn-applications-distributedshell-2.2.0.jar -shell_command uptime
+
+after running this command, found that one of the jar file get copied to 2 slave machines inside /home/srini/DistributedShell/1 folder (HDFS filesystem). 
+To check this jar file : use:
+hdfs dfs -ls /home/srini 
+
+Also the output of the above command found on one of the slave machine under /$HADOOP_HOME/logs/userlogs folder. 
